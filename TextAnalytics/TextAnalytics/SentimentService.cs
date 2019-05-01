@@ -15,8 +15,8 @@ namespace TextAnalytics.Services
     public class SentimentService
     {
         //Example Base Url: https://westus.api.cognitive.microsoft.com
-        const string _sentimentAPIBaseUrl = "<Base URL API>";
-        const string _textSentimentAPIKey = "<API Key>";
+        const string _sentimentAPIBaseUrl = "https://brazilsouth.api.cognitive.microsoft.com";//"<Base URL API>";
+        const string _textSentimentAPIKey = "b87a3ba42e9141a8a8cc2bbe4c0541e6";//"<API Key>";
         //HttpClient wrapper for accessing the TextAnalytics API
         readonly static TextAnalyticsClient _textAnalyticsApiClient
             = new TextAnalyticsClient(new ApiKeyServiceClientCredentials(_textSentimentAPIKey))
@@ -25,7 +25,7 @@ namespace TextAnalytics.Services
             };
         //Input the text to be analyzed and return its sentiment score. 
         //The sentiment score will range from 0 to 1, where 0 is negative sentiment and 1 is positive sentiment.
-        public static async Task<double?> GetSentiment(string text)
+        public async Task<double?> GetSentiment(string text)
         {
             //Create the request object to send to the TextAnalytics API
             //The request can contain multiple text inputs which you can use to batch multiple requests into one API call
