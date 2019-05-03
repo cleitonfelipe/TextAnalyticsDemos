@@ -8,5 +8,6 @@ namespace TextAnalytics.UI.Models
     public class TextModel
     {
         public string Text { get; set; }
+        public double? Result { get; set; }
     }
 }

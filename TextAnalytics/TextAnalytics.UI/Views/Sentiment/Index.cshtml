@@ -13,11 +13,20 @@
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Result)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Text)
-            @ViewData["Retorno"]
+            @Html.DisplayFor(model => model.Text) |
+            @if (Model.Result <= 0.5)
+            {
+                @Html.DisplayFor(model => model.Result)
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.Result)
+            }
         </dd>
+
     </dl>
 </div>
 <div>

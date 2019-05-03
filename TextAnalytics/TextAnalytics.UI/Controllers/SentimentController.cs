@@ -10,13 +10,9 @@ namespace TextAnalytics.UI.Controllers
 {
     public class SentimentController : Controller
     {
-        private SentimentService _service;
-        public SentimentController()
-        {
-            _service = new SentimentService();
+        private SentimentService _service = new SentimentService();
 
-        }
-        public IActionResult Index()
+        public IActionResult Index(TextModel model = null)
         {
             return View();
         }
@@ -29,7 +25,10 @@ namespace TextAnalytics.UI.Controllers
 
         public async Task<IActionResult> Post([FromForm] TextModel textModel)
         {
-            return View("Index");
+            var _result = new TextModel();
+            _result.Text = textModel.Text;
+            _result.Result = await _service.GetSentiment(textModel.Text);
+            return View("Index", _result);
         }
     }
 }
